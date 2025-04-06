@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Container>
+  <Name>Lavamusic</Name>
+  <Repository>ghcr.io/evgeni-mira/lavamusic:latest</Repository>
+  <Registry>https://github.com/evgeni-mira/lavamusic</Registry>
+  <Project>https://github.com/evgeni-mira/lavamusic</Project>
+  <Overview>A self-hosted discord music bot.</Overview>
+  <Category>MediaServer:Music</Category>
+  <Support>https://github.com/evgeni-mira/lavamusic/issues</Support>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Port>
+      <HostPort>3000</HostPort>
+      <ContainerPort>3000</ContainerPort>
+      <Protocol>tcp</Protocol>
+    </Port>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/lavamusic</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/media/music</HostDir>
+      <ContainerDir>/app/music</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Icon>https://raw.githubusercontent.com/evgeni-mira/lavamusic/main/public/logo192.png</Icon>
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  <TemplateURL/>
+  <ExtraParams></ExtraParams>
+  <PostArgs></PostArgs>
+  <Config Name="AppData Config Path" Target="/config" Default="/mnt/user/appdata/lavamusic" Mode="rw" Description="Container config directory" Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Music Library Path" Target="/app/music" Default="/mnt/user/media/music" Mode="rw" Description="Your local music library" Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Web Port" Target="3000" Default="3000" Description="WebUI Port" Type="Port" Display="always" Required="true" Mask="false"/>
+</Container>
